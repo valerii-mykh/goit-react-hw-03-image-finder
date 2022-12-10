@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Searchbar from 'components/Searchbar/Searchbar';
+import ImageGallery from 'components/ImageGallery/ImageGallery';
 import s from 'components/Styles.module.css';
+import Button from 'components/Button/Button';
 
 export default class App extends Component {
   componentDidMount() {
@@ -14,6 +16,8 @@ export default class App extends Component {
     return (
       <div className={s.App}>
         <Searchbar />
+        <ImageGallery />
+        <Button />
       </div>
     );
   }
