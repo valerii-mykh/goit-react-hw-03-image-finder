@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Searchbar from 'components/Searchbar/Searchbar';
+import s from 'components/Styles.module.css';
 
 export default class App extends Component {
   componentDidMount() {
@@ -9,6 +11,10 @@ export default class App extends Component {
       .then(console.log);
   }
   render() {
-    return <div>image</div>;
+    return (
+      <div className={s.App}>
+        <Searchbar />
+      </div>
+    );
   }
 }
