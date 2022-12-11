@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import s from 'components/Styles.module.css';
@@ -74,6 +76,18 @@ export default class App extends Component {
         <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.FindmodalImg} />
         {status === 'resolved' && <Button onClick={this.LoadBtn} />}
         {showModal && <Modal closeModal={this.toggleModal} modalImg={modalImg} />}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     );
   }
