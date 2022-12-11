@@ -1,10 +1,10 @@
-import { Audio } from 'react-loader-spinner';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import { RotatingLines } from 'react-loader-spinner';
+import s from 'components/Styles.module.css';
 
 function Spinner() {
   return (
-    <div className="Loader">
-      <Audio height="80" width="80" radius="9" color="green" ariaLabel="three-dots-loading" wrapperStyle wrapperClass />
+    <div className={s.Loader}>
+      <RotatingLines strokeColor="blue" strokeWidth="4" animationDuration="1" width="196" visible={true} />
     </div>
   );
 }

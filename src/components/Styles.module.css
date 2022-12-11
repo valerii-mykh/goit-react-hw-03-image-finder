@@ -206,3 +206,12 @@ img {
 .Button:focus {
   background-color: #303f9f;
 }
+
+/*
+* Стили компонента Loader
+*/
+
+.Loader {
+  margin: 50px auto;
+  text-align: center;
+}
