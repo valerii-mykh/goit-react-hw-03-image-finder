@@ -19,7 +19,7 @@ export default class App extends Component {
     modalImg: null,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
     if (prevState.name !== this.state.name) {
       this.setState({ status: 'pending' });
 
@@ -72,8 +72,8 @@ export default class App extends Component {
     return (
       <div className={s.App}>
         <Searchbar onSubmit={this.handleSubmitForm} />
-        {status === 'pending' && <Spinner />}
         <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.FindmodalImg} />
+        {status === 'pending' && <Spinner />}
         {status === 'resolved' && <Button onClick={this.LoadBtn} />}
         {showModal && <Modal closeModal={this.toggleModal} modalImg={modalImg} />}
         <ToastContainer
