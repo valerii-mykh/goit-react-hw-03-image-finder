@@ -52,7 +52,7 @@ export default class App extends Component {
     this.setState({ name: value, page: 1 });
   };
 
-  LoadBtn = () => {
+  loadBtn = () => {
     this.setState({ page: this.state.page + 1 });
   };
 
@@ -62,7 +62,7 @@ export default class App extends Component {
     }));
   };
 
-  FindmodalImg = (id, img, tags) => {
+  findmodalImg = (id, img, tags) => {
     this.setState({ modalImg: { id: id, img: img, tags: tags } });
   };
 
@@ -73,10 +73,10 @@ export default class App extends Component {
       <div className={s.App}>
         <Searchbar onSubmit={this.handleSubmitForm} />
         {status === 'resolved' && (
-          <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.FindmodalImg} />
+          <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.findmodalImg} />
         )}
         {status === 'pending' && <Spinner />}
-        {status === 'resolved' && <Button onClick={this.LoadBtn} />}
+        {status === 'resolved' && <Button onClick={this.loadBtn} />}
         {showModal && <Modal closeModal={this.toggleModal} modalImg={modalImg} />}
         <ToastContainer
           position="top-center"
