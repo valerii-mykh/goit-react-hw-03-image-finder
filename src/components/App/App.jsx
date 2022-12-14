@@ -29,7 +29,7 @@ export default class App extends Component {
     }
 
     if (prevState.page !== this.state.page && this.state.page !== 1) {
-      this.setState({ status: 'pending' });
+      this.setState({ query: [], status: 'pending' });
 
       pixabayApi(this.state.name, this.state.page)
         .then(query => query.hits)
@@ -72,7 +72,9 @@ export default class App extends Component {
     return (
       <div className={s.App}>
         <Searchbar onSubmit={this.handleSubmitForm} />
-        <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.FindmodalImg} />
+        {status === 'resolved' && (
+          <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.FindmodalImg} />
+        )}
         {status === 'pending' && <Spinner />}
         {status === 'resolved' && <Button onClick={this.LoadBtn} />}
         {showModal && <Modal closeModal={this.toggleModal} modalImg={modalImg} />}
