@@ -73,11 +73,11 @@ export default class App extends Component {
     return (
       <div className={s.App}>
         <Searchbar onSubmit={this.handleSubmitForm} />
-        {status === 'pending' && <Spinner />}
+
         {status === 'resolved' && (
           <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.findmodalImg} />
         )}
-
+        {status === 'pending' && <Spinner />}
         {status === 'resolved' && <Button onClick={this.loadBtn} />}
         {showModal && <Modal closeModal={this.toggleModal} modalImg={modalImg} />}
         <ToastContainer

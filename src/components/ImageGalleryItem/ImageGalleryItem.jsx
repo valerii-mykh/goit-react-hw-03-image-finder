@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import s from 'components/Styles.module.css';
 
-export default function ImageGalleryItem({ webformatURL, tags, toggleModal, bigImg }) {
+export default function ImageGalleryItem({ query: { webformatURL, tags }, toggleModal, bigImg }) {
   return (
     <li className={s.ImageGalleryItem}>
       <img
