@@ -6,6 +6,11 @@ import s from 'components/Styles.module.css';
 const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
+  static propTypes = {
+    closeModal: PropTypes.func.isRequired,
+    src: PropTypes.string,
+    alt: PropTypes.string,
+  };
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }

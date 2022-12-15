@@ -6,6 +6,9 @@ import { FiSearch } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
 export default class Searchbar extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
   state = {
     value: '',
   };
