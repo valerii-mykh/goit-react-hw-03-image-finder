@@ -6,14 +6,14 @@ import s from 'components/Styles.module.css';
 function ImageGallery({ query, toggleModal, bigImg }) {
   return (
     <ul className={s.ImageGallery}>
-      {query.map(el => (
+      {query.map(({ id, webformatURL, largeImageURL, tags }) => (
         <ImageGalleryItem
-          key={el.id}
-          largeImageURL={el.largeImageURL}
-          webformatURL={el.webformatURL}
-          tags={el.tags}
+          key={id}
+          largeImageURL={largeImageURL}
+          webformatURL={webformatURL}
+          tags={tags}
           toggleModal={() => toggleModal()}
-          bigImg={() => bigImg(el.id, el.largeImageURL, el.tags)}
+          bigImg={() => bigImg(id, largeImageURL, tags)}
         />
       ))}
     </ul>

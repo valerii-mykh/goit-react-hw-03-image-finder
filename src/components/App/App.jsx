@@ -6,6 +6,7 @@ import ImageGallery from 'components/ImageGallery/ImageGallery';
 import s from 'components/Styles.module.css';
 import Button from 'components/Button/Button';
 import pixabayApi from 'components/Api/Api';
+
 import Modal from 'components/Modal/Modal';
 import Spinner from 'components/Loader/Spinner';
 
@@ -72,6 +73,7 @@ export default class App extends Component {
     return (
       <div className={s.App}>
         <Searchbar onSubmit={this.handleSubmitForm} />
+
         {status === 'resolved' && (
           <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.findmodalImg} />
         )}
