@@ -22,7 +22,7 @@ export default class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.name !== this.state.name) {
-      this.setState({ query: [], status: 'pending' });
+      this.setState({ status: 'pending' });
 
       pixabayApi(this.state.name, this.state.page)
         .then(query => query.hits)
@@ -30,7 +30,7 @@ export default class App extends Component {
     }
 
     if (prevState.page !== this.state.page && this.state.page !== 1) {
-      this.setState({ query: [], status: 'pending' });
+      this.setState({ status: 'pending' });
 
       pixabayApi(this.state.name, this.state.page)
         .then(query => query.hits)
@@ -54,9 +54,7 @@ export default class App extends Component {
   };
 
   loadBtn = () => {
-    this.setState(prevState => ({
-      page: prevState.page + 1,
-    }));
+    this.setState({ page: this.state.page + 1 });
   };
 
   toggleModal = () => {
