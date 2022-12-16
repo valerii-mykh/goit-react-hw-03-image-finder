@@ -20,7 +20,7 @@ export default class App extends Component {
     modalImg: null,
   };
 
-  componentDidUpdate(_, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevState.name !== this.state.name) {
       this.setState({ query: [], status: 'pending' });
 
@@ -54,9 +54,9 @@ export default class App extends Component {
   };
 
   loadBtn = () => {
-    this.setState(({ page }) => {
-      return { page: page + 1, status: 'pending' };
-    });
+    this.setState(prevState => ({
+      page: prevState.page + 1,
+    }));
   };
 
   toggleModal = () => {
