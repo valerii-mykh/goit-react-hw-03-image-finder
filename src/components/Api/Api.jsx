@@ -6,7 +6,7 @@ function fetchQuery(searchQuery, page) {
     `${BASE_URL}/?key=${API_KEY}&q=${searchQuery}
       &image_type=photo&orientation=horizontal&page=
       ${page}&per_page=12`
-  ).then(res => res.json());
+  ).then(response => response.json());
 }
 
 export default fetchQuery;
