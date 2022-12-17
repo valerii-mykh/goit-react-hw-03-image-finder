@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Searchbar from 'components/Searchbar/Searchbar';
 import ImageGallery from 'components/ImageGallery/ImageGallery';
 import s from 'components/Styles.module.css';
@@ -98,6 +99,18 @@ export default class App extends Component {
       return (
         <div>
           <Searchbar onSubmit={this.handleSubmitInput} />
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
       );
     }
