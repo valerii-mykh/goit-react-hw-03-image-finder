@@ -75,7 +75,7 @@ export default class App extends Component {
         <Searchbar onSubmit={this.handleSubmitForm} />
 
         {status === 'resolved' && (
-          <ImageGallery query={query} toggleModal={this.toggleModal} bigImg={this.findmodalImg} />
+          <ImageGallery query={this.state.query} toggleModal={this.toggleModal} bigImg={this.findmodalImg} />
         )}
         {status === 'pending' && <Spinner />}
         {status === 'resolved' && <Button onClick={this.loadBtn} />}

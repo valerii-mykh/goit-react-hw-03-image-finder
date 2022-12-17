@@ -3,34 +3,25 @@ import PropTypes from 'prop-types';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 import s from 'components/Styles.module.css';
 
-function ImageGallery({ query, toggleModal, bigImg }) {
+function ImageGallery({ query, onClickImg }) {
   return (
     <ul className={s.ImageGallery}>
-      {query.map(({ id, webformatURL, largeImageURL, tags }) => (
-        <ImageGalleryItem
-          key={id}
-          largeImageURL={largeImageURL}
-          webformatURL={webformatURL}
-          tags={tags}
-          toggleModal={() => toggleModal()}
-          bigImg={() => bigImg(id, largeImageURL, tags)}
-        />
-      ))}
+      {query.map(({ id, webformatURL, tags }) => {
+        return <ImageGalleryItem key={id} src={webformatURL} tags={tags} onClick={onClickImg} />;
+      })}
     </ul>
   );
 }
 
 ImageGallery.propTypes = {
-  query: PropTypes.arrayOf(
+  gallery: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      tags: PropTypes.string,
-      webformatURL: PropTypes.string,
-      largeImageURL: PropTypes.string,
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
     })
   ),
-  bigImg: PropTypes.func.isRequired,
-  toggleModal: PropTypes.func.isRequired,
+  onClickImg: PropTypes.func,
 };
 
 export default ImageGallery;
