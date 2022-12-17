@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 // import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Searchbar from 'components/Searchbar/Searchbar';
-import ImageGallery from 'components/ImageGallery/ImageGallery';
-// import s from 'components/Styles.module.css';
+import ImageGallery from 'components/ImageGallery/ImageGalleryClass';
+import s from 'components/Styles.module.css';
 import Button from 'components/Button/Button';
 import pixabayApi from 'components/Api/Api';
 
@@ -16,6 +16,7 @@ export default class App extends Component {
     query: [],
     page: 1,
     name: '',
+    modalAlt: '',
     showModal: false,
     modalImg: '',
     error: null,
@@ -43,8 +44,8 @@ export default class App extends Component {
       pixabayApi
         .fetchImages(nextQuery, nextPage)
         .then(({ hits }) => {
-          const images = hits.map(({ id, webformatURL, tags }) => {
-            return { id, webformatURL, tags };
+          const images = hits.map(({ id, webformatURL, largeImageURL, tags }) => {
+            return { id, webformatURL, largeImageURL, tags };
           });
           // console.log(images);
           if (images.length > 0) {
@@ -108,7 +109,7 @@ export default class App extends Component {
         <div>
           <Searchbar onSubmit={this.handleSubmitInput} />
           {query.length > 0 && <ImageGallery query={query} />}
-          <Spinner />
+          <Spinner className={s.Loader} />
         </div>
       );
     }
