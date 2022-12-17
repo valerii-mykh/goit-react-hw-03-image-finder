@@ -9,4 +9,6 @@ function fetchQuery(searchQuery, page) {
   ).then(response => response.json());
 }
 
-export default fetchQuery;
+const api = { fetchQuery };
+
+export default api;

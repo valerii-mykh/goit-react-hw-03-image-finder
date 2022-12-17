@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Searchbar from 'components/Searchbar/Searchbar';
-import ImageGallery from 'components/ImageGallery/ImageGalleryClass';
+import ImageGallery from 'components/ImageGallery/ImageGallery';
 import s from 'components/Styles.module.css';
 import Button from 'components/Button/Button';
 import pixabayApi from 'components/Api/Api';
@@ -42,7 +42,7 @@ export default class App extends Component {
 
     if (prevQuery !== nextQuery || prevPage !== nextPage) {
       pixabayApi
-        .fetchImages(nextQuery, nextPage)
+        .fetchQuery(nextQuery, nextPage)
         .then(({ hits }) => {
           const images = hits.map(({ id, webformatURL, largeImageURL, tags }) => {
             return { id, webformatURL, largeImageURL, tags };

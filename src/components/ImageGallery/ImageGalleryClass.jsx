@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import pixabayApi from 'components/Api/Api';
-import ImageGalleryItem from './ImageGalleryItem';
+import ImageGalleryItem from 'components/ImageGalleryItem';
 import Button from 'components/Button/Button';
 
 import s from 'components/Styles.module.css';
@@ -113,6 +113,7 @@ class ImageGallery extends Component {
             })}
           </ul>
           <Button
+            className={s.Button}
             handleClickBtn={() => {
               this.setState({ status: 'pending' });
               handleClickBtn();

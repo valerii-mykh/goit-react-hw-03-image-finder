@@ -7,43 +7,34 @@ const modalRoot = document.querySelector('#modal-root');
 
 export default class Modal extends Component {
   static propTypes = {
-    closeModal: PropTypes.func.isRequired,
-    src: PropTypes.string,
-    alt: PropTypes.string,
+    onClose: PropTypes.func.isRequired,
   };
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown);
   }
+
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
-  handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      this.props.closeModal();
+  handleKeyDown = event => {
+    if (event.code === 'Escape') {
+      this.props.onClose();
     }
   };
 
-  backDropClick = event => {
-    console.log('click');
+  handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      this.props.closeModal();
+      this.props.onClose();
     }
   };
 
   render() {
     return createPortal(
-      <div className={s.Overlay} onClick={this.backDropClick}>
-        <div className={s.Modal}>
-          <img src={this.props.modalImg.img} alt={this.props.modalImg.tags} key={this.props.modalImg.id} />
-        </div>
+      <div className={s.Overlay} onClick={this.handleBackdropClick}>
+        <div className={s.Modal}>{this.props.children}</div>
       </div>,
       modalRoot
     );
   }
 }
-
-Modal.propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  modalImg: PropTypes.object,
-};
