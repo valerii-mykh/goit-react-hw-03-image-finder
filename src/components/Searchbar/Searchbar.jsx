@@ -24,7 +24,7 @@ export default class Searchbar extends Component {
       toast.warning('Enter data in the search field!');
       return;
     }
-    this.props.onSubmit(this.state.value);
+    this.props.onSubmit(this.state.value.trim().toLowerCase());
     this.reset();
   };
 
